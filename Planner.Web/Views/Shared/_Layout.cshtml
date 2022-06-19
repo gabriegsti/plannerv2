@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Student_Planner</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <style>
+        .modal{
+            width: 300px;
+        }
+        .modal-content{
+            width: 300px;
+        }
+        .list-group-item:hover{
+            background-color: rgba(59,57,57,0.164)!important;
+        }
+    </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-light bg-light shadow">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Student Planner</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+    </div>
+</nav>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Student Planner</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+  
+      <div class="modal-body">
+        <div class="d-grid gap-2 col-12 mx-auto" style="width: 1500px;">
+            <a asp-controller="Evento" asp-action="Consulta"  role="button" class="btn btn-primary btn-lg btn-block">
+	            Eventos
+            </a>
+            
+            <br/>
+            
+            <a asp-controller="Home" asp-action="Materia" class="btn btn-primary btn-lg btn-block" role="button">
+	            Matérias
+            </a>
+            
+            <br/>
+            <a asp-controller="Home" asp-action="Anotacoes"  class="btn btn-primary btn-lg btn-block" role="button" >
+	           Anotações
+            </a><br/>
+            <a asp-controller="Home" asp-action="Avaliacoes" class="btn btn-primary btn-lg btn-block" type="button">
+	            Avaliações
+            </a><br/>
+            <a asp-controller="Home" asp-action="Notas" class="btn btn-primary btn-lg btn-block" type="button">
+                Notas
+            </a><br/>
+        </div> 
+      </div>
+      
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sair</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - Student_Planner - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
