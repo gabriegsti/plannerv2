@@ -20,7 +20,7 @@ namespace Planner.Web.Models
         [DisplayFormat(ApplyFormatInEditMode =true)]
         public DateTime? Data_Hora { get; set; }
         [JsonPropertyName("id_Usuario")]
-        public int Id_Usuario { get; set; }
+        public int? Id_Usuario { get; set; }
 
         public EventoViewModel()
         {

@@ -7,19 +7,13 @@ namespace Planner.Entidades
 {
     public class Evento : IAgendavel
     {
-        [JsonPropertyName("id_Evento")]
         [Key]
         public int Id_Evento { get; set; }
-        [JsonPropertyName("titulo")]
-        [Required(ErrorMessage = "O campo titulo é obrigatório.")]
+        [MaxLength(100)]
         public string Titulo { get; set; }
-        //[DataType(DataType.DateTime)]
-        [JsonPropertyName("data_Hora")]
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(ApplyFormatInEditMode =true)]
         public DateTime? Data_Hora { get; set; }
-        [JsonPropertyName("id_Usuario")]
-        public int Id_Usuario { get; set; }
+        public int? UsuarioId { get; set; }
+        public virtual Usuario Usuario { get; set; }
 
         public Evento()
         {
@@ -29,7 +23,7 @@ namespace Planner.Entidades
         {
             Titulo = titulo;
             Data_Hora = data_hora;
-            Id_Usuario = id_usuario;
+            UsuarioId = id_usuario;
         }
     }
 }
