@@ -1,4 +1,4 @@
-﻿@model Planner.Web.Models.AulaViewModel
+﻿@model Planner.Web.Models.AvaliacaoViewModel
 
 @{
     ViewData["Title"] = "Remover";
@@ -8,20 +8,20 @@
 
 <h3>Deseja remover?</h3>
 <div>
-    <h4>AulaViewModel</h4>
+    <h4>AvaliacaoViewModel</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id_Aula)
+            @Html.DisplayNameFor(model => model.Id_Avaliacao)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id_Aula)
+            @Html.DisplayFor(model => model.Id_Avaliacao)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id_materia)
+            @Html.DisplayNameFor(model => model.Id_Materia)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id_materia)
+            @Html.DisplayFor(model => model.Id_Materia)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Titulo)
@@ -30,16 +30,22 @@
             @Html.DisplayFor(model => model.Titulo)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nota)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nota)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Data_Hora)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Data_Hora)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Link)
+            @Html.DisplayNameFor(model => model.Id_Evento)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Link)
+            @Html.DisplayFor(model => model.Id_Evento)
         </dd>
     </dl>
     

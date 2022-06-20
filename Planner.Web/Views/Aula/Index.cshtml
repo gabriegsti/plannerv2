@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Minhas Aulas</h1>
 
 <p>
     <a asp-action="Cadastrar">Nova Aula</a>
@@ -15,9 +15,6 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Id_Aula)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id_materia)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Titulo)
@@ -36,9 +33,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Id_Aula)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id_materia)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Titulo)

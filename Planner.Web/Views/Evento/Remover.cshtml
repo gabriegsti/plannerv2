@@ -6,7 +6,7 @@
 }
 
 
-<h3>Deseja remover ? </h3>
+<h3>Deseja remover?</h3>
 <div>
     <hr />
 <form asp-action="Remover">
@@ -31,6 +31,6 @@
         </dd>
     </dl>
           @Html.ActionLink("Remover", "RemoverPorId", new { id = Model.Id_Evento } , new {@class= "btn btn-danger"})
-        <a asp-action="Consulta">Voltar para tela de eventos</a>
+        <a asp-action="Consulta">Voltar</a>
     </form>
 </div>
