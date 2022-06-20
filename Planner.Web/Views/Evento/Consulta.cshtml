@@ -4,8 +4,8 @@
     ViewData["Title"] = "Consulta";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Consulta</h1>
+<br/>
+<h1>Eventos</h1>
 
 <p>
     <a asp-controller="Evento" asp-action="Cadastrar">Create New</a>
@@ -39,6 +39,7 @@
             </td>
             <td>
                 @Html.ActionLink("Editar", "Edit", new { id = item.Id_Evento }, new {@class= "btn btn-primary"} ) |
+
                 @Html.ActionLink("Remover", "Remover", new { id = item.Id_Evento } , new {@class= "btn btn-danger"})
             </td>
         </tr>
