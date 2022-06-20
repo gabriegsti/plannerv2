@@ -6,10 +6,10 @@ namespace Planner.Entidades
     {
         [Key]
         public int Id_Anotacao { get; set; }
-        [Required]
         public int AulaId { get; set; }
         public virtual Aula Aula { get; set; }
         public string Titulo { get; set; }
+        [MaxLength(500)]
         public string? Campo_Texto { get; set; }
 
     }

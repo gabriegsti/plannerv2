@@ -8,11 +8,10 @@ namespace Planner.Entidades
     public class Avaliacao : IAgendavel
     {
         [Key]
-        [Required]
         public int Id_Avaliacao { get; set; }
-        [Required]
         public int MateriaId { get; set; }
         public virtual Materia materia { get; set; }
+        [MaxLength(100)]
         public string Titulo { get; set; }
         public double? Nota { get; set; }
         public DateTime? Data_Hora { get; set; }
