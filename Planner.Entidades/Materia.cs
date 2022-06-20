@@ -8,13 +8,16 @@ namespace Planner.Entidades
         [Key]
         [Required]
         public int Id_Materia { get; set; }
-        [Required(ErrorMessage = "O campo id_usuario é obrigatório.")]
-        public int Id_Usuario { get; set; }
-        public List<Avaliacao> LstAvaliacoes { get; set; }
+        public int? Id_Usuario { get; set; }
+        [MaxLength(100)]
         public string Titulo { get; set; }
-        public string Email { get; set; }
-        public string Professor { get; set; }
+        [MaxLength(100)]
+        public string? Email { get; set; }
+        [MaxLength(100)]
+        public string? Professor { get; set; }
         public DateTime? Data_Inicio { get; set; }
         public DateTime? Data_Fim { get; set; }
+        public List<Avaliacao>? LstAvaliacoes { get; set; }
+        public List<Aula>? LstAulas { get; set; }
     }
 }

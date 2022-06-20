@@ -72,5 +72,33 @@ namespace Planner.Web.Controllers
             _repositorio.Excluir(id);
             return RedirectToAction("Consulta");
         }
+
+        public IActionResult Editar(int id)
+        {
+            var evento = _repositorio.Buscar(id);
+
+            EventoViewModel model = new EventoViewModel();
+            model.Titulo = evento.Titulo;
+            model.Data_Hora = evento.Data_Hora;
+            model.Id_Evento = evento.Id_Evento;
+            model.Id_Usuario = evento.UsuarioId;
+            model.Titulo = evento.Titulo.ToString();
+
+            return View(model);
+        }
+
+        public IActionResult EditarPorId(EventoViewModel eventoViewModel)
+        {
+            Evento evento = new Evento();
+            evento.Titulo = eventoViewModel.Titulo;
+            evento.Data_Hora = eventoViewModel.Data_Hora;
+            evento.Id_Evento = eventoViewModel.Id_Evento;
+            evento.UsuarioId = eventoViewModel.Id_Usuario;
+            evento.Titulo = eventoViewModel.Titulo.ToString();
+
+           _repositorio.Atualizar(evento);
+
+            return RedirectToAction("Consulta");
+        }
     }
 }

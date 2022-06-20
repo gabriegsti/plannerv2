@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Planner.Web.Models.MateriaViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Cadastrar">Adicionar Matéria</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_Materia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Professor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data_Inicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data_Fim)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Materia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Professor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_Inicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_Fim)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id=item.Id_Materia  },  new {@class= "btn btn-primary"}) |
+                @Html.ActionLink("Remover", "Remover", new { id=item.Id_Materia }, new {@class= "btn btn-danger"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<Planner.Web.Models.EventoViewModel>
 
 @{
-    ViewData["Title"] = "Consulta";
+    ViewData["Title"] = "Lista de Eventos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Consulta</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>
     <a asp-controller="Evento" asp-action="Cadastrar">Create New</a>
@@ -38,7 +38,7 @@
                 @Html.DisplayFor(modelItem => item.Data_Hora)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id_Evento }, new {@class= "btn btn-primary"} ) |
+                @Html.ActionLink("Editar", "Editar", new { id = item.Id_Evento }, new {@class= "btn btn-primary"} ) |
                 @Html.ActionLink("Remover", "Remover", new { id = item.Id_Evento } , new {@class= "btn btn-danger"})
             </td>
         </tr>
