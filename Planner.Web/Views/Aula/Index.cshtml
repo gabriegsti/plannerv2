@@ -1,26 +1,29 @@
-﻿@model IEnumerable<Planner.Web.Models.EventoViewModel>
+﻿@model IEnumerable<Planner.Web.Models.AulaViewModel>
 
 @{
-    ViewData["Title"] = "Lista de Eventos";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1>Minhas Aulas</h1>
 
 <p>
-    <a asp-controller="Evento" asp-action="Cadastrar">Novo Evento</a>
+    <a asp-action="Cadastrar">Nova Aula</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id_Evento)
+                @Html.DisplayNameFor(model => model.Id_Aula)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Titulo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Data_Hora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Link)
             </th>
             <th></th>
         </tr>
@@ -29,7 +32,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id_Evento)
+                @Html.DisplayFor(modelItem => item.Id_Aula)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Titulo)
@@ -38,11 +41,14 @@
                 @Html.DisplayFor(modelItem => item.Data_Hora)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Editar", new { id = item.Id_Evento }, new {@class= "btn btn-primary"} ) |
-                @Html.ActionLink("Remover", "Remover", new { id = item.Id_Evento } , new {@class= "btn btn-danger"})
+                @Html.DisplayFor(modelItem => item.Link)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
 }
     </tbody>
 </table>
-

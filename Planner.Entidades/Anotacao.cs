@@ -11,6 +11,7 @@ namespace Planner.Entidades
         public string Titulo { get; set; }
         [MaxLength(500)]
         public string? Campo_Texto { get; set; }
+        public string? Link { get; set; }
 
     }
 }

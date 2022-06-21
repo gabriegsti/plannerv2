@@ -46,7 +46,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Evento}/{action=Consulta}/{id?}");
+    pattern: "{controller=Evento}/{action=ListaDeEventos}/{id?}");
 app.MapRazorPages();
 
 app.Run();

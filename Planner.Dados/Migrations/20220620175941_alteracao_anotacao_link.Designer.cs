@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Planner.Dados;
 
@@ -11,9 +12,10 @@ using Planner.Dados;
 namespace Planner.Dados.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20220620175941_alteracao_anotacao_link")]
+    partial class alteracao_anotacao_link
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,8 +36,7 @@ namespace Planner.Dados.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Campo_Texto")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Link")
                         .HasColumnType("nvarchar(max)");
@@ -67,20 +68,13 @@ namespace Planner.Dados.Migrations
 
                     b.Property<string>("Link")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int?>("MateriaId_Materia")
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id_Aula");
-
-                    b.HasIndex("MateriaId_Materia");
 
                     b.ToTable("Aula");
                 });
@@ -107,8 +101,7 @@ namespace Planner.Dados.Migrations
 
                     b.Property<string>("Titulo")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id_Avaliacao");
 
@@ -160,20 +153,19 @@ namespace Planner.Dados.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Id_Usuario")
+                    b.Property<int>("Id_Usuario")
                         .HasColumnType("int");
 
                     b.Property<string>("Professor")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id_Materia");
 
@@ -195,8 +187,7 @@ namespace Planner.Dados.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Senha")
                         .IsRequired()
@@ -217,13 +208,6 @@ namespace Planner.Dados.Migrations
                         .IsRequired();
 
                     b.Navigation("Aula");
-                });
-
-            modelBuilder.Entity("Planner.Entidades.Aula", b =>
-                {
-                    b.HasOne("Planner.Entidades.Materia", null)
-                        .WithMany("LstAulas")
-                        .HasForeignKey("MateriaId_Materia");
                 });
 
             modelBuilder.Entity("Planner.Entidades.Avaliacao", b =>
@@ -261,8 +245,6 @@ namespace Planner.Dados.Migrations
 
             modelBuilder.Entity("Planner.Entidades.Materia", b =>
                 {
-                    b.Navigation("LstAulas");
-
                     b.Navigation("LstAvaliacoes");
                 });
 #pragma warning restore 612, 618

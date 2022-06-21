@@ -32,6 +32,24 @@ namespace Planner.Web.Controllers
 
             return View(lst);
         }
+        
+        //Criei para a primeira tela
+        public IActionResult ListaDeEventos()
+        {
+            List<EventoViewModel> lst = new List<EventoViewModel>();
+            var eventos = _repositorio.Buscar();
+
+            foreach (var evento in eventos)
+            {
+                EventoViewModel model = new EventoViewModel();
+                model.Titulo = evento.Titulo;
+                model.Data_Hora = evento.Data_Hora;
+                model.Titulo = evento.Titulo.ToString();
+                lst.Add(model);
+            }
+
+            return View(lst);
+        }
 
         public IActionResult Cadastrar()
         {
