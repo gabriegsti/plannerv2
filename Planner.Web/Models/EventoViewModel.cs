@@ -8,7 +8,6 @@ namespace Planner.Web.Models
 {
     public class EventoViewModel : IAgendavelViewModel
     {
-        //[JsonPropertyName("id_Evento")]
         [Key]
         [Display(Name = "Cod.")]
         public int Id_Evento { get; set; }
@@ -19,7 +18,7 @@ namespace Planner.Web.Models
 
         [DataType(DataType.DateTime)]
         [JsonPropertyName("data_Hora")]
-        [DisplayFormat(ApplyFormatInEditMode =true)] //verificar essa propriedade nas demais Models
+        [DisplayFormat(ApplyFormatInEditMode =true)] 
         [Display(Name = "Dia/Horário")]
         public DateTime? Data_Hora { get; set; }
 

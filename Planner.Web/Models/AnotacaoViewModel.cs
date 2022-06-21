@@ -5,7 +5,7 @@ namespace Planner.Web.Models
     public class AnotacaoViewModel
     {
         public int Id_Anotacao { get; set; }
-        [Required]
+       
         public int Id_Aula { get; set; }
 
         [Required(ErrorMessage = "O campo titulo é obrigatório")]

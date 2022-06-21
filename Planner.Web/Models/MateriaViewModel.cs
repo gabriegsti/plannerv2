@@ -6,7 +6,6 @@ namespace Planner.Web.Models
     public class MateriaViewModel
     {
         [Key]
-        [Required]
         public int Id_Materia { get; set; }
         [Required(ErrorMessage = "O campo id_usuario é obrigatório.")]
         public int? Id_Usuario { get; set; }

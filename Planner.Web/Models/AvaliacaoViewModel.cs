@@ -9,10 +9,8 @@ namespace Planner.Web.Models
     {
         [Key]
         [Display(Name = "Cod.")]
-        [Required]
         public int Id_Avaliacao { get; set; }
         
-        [Required]
         public int Id_Materia { get; set; }
 
         [Display(Name = "Avaliação")]
@@ -20,7 +18,8 @@ namespace Planner.Web.Models
         public string Titulo { get; set; }
         
         public double? Nota { get; set; }
-        
+
+        [DisplayFormat(ApplyFormatInEditMode = true)]
         [Display(Name = "Dia/Horário")]
         public DateTime? Data_Hora { get; set; }
 
