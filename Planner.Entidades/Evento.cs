@@ -15,6 +15,7 @@ namespace Planner.Entidades
         public int? UsuarioId { get; set; }
         public virtual Usuario Usuario { get; set; }
 
+        //public bool Concluido { get; set; }
         public Evento()
         {
 

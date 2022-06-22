@@ -2,8 +2,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Planner.Dados;
 
 #nullable disable
@@ -18,31 +18,31 @@ namespace Planner.Dados.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.6")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("Planner.Entidades.Anotacao", b =>
                 {
                     b.Property<int>("Id_Anotacao")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id_Anotacao"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Anotacao"), 1L, 1);
 
                     b.Property<int>("AulaId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("Campo_Texto")
                         .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Link")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id_Anotacao");
 
@@ -55,28 +55,28 @@ namespace Planner.Dados.Migrations
                 {
                     b.Property<int>("Id_Aula")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id_Aula"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Aula"), 1L, 1);
 
                     b.Property<DateTime>("Data_Hora")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Id_Materia")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("Link")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int?>("MateriaId_Materia")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id_Aula");
 
@@ -89,26 +89,26 @@ namespace Planner.Dados.Migrations
                 {
                     b.Property<int>("Id_Avaliacao")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id_Avaliacao"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Avaliacao"), 1L, 1);
 
                     b.Property<DateTime?>("Data_Hora")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("EventoId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<int>("MateriaId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<double?>("Nota")
-                        .HasColumnType("double precision");
+                        .HasColumnType("float");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id_Avaliacao");
 
@@ -123,20 +123,20 @@ namespace Planner.Dados.Migrations
                 {
                     b.Property<int>("Id_Evento")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id_Evento"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Evento"), 1L, 1);
 
                     b.Property<DateTime?>("Data_Hora")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int?>("UsuarioId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("Id_Evento");
 
@@ -149,31 +149,31 @@ namespace Planner.Dados.Migrations
                 {
                     b.Property<int>("Id_Materia")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id_Materia"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Materia"), 1L, 1);
 
                     b.Property<DateTime?>("Data_Fim")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("Data_Inicio")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int?>("Id_Usuario")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("Professor")
                         .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id_Materia");
 
@@ -184,24 +184,24 @@ namespace Planner.Dados.Migrations
                 {
                     b.Property<int>("Id_Usuario")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id_Usuario"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Usuario"), 1L, 1);
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Senha")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id_Usuario");
 

@@ -7,18 +7,18 @@ using System.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-//builder.Services.AddDbContext<Contexto>(options =>
-//    options.UseSqlServer(connectionString));
-
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<Contexto>(options
-                =>
-{
-    options.UseNpgsql(connectionString);
+builder.Services.AddDbContext<Contexto>(options =>
+    options.UseSqlServer(connectionString));
 
-});
-AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+//builder.Services.AddDbContext<Contexto>(options
+//                =>
+//{
+//    options.UseNpgsql(connectionString);
+
+//});
+//AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -57,7 +57,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Evento}/{action=ListaDeEventos}/{id?}");
+    pattern: "{controller=Evento}/{action=Consulta}/{id?}");
 app.MapRazorPages();
 
 app.Run();

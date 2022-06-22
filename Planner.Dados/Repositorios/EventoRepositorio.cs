@@ -30,7 +30,7 @@ namespace Planner.Dados.Repositorios
 
         public IEnumerable<Evento> Buscar()
         {
-            return _contexto.Evento.AsEnumerable();
+            return _contexto.Evento.AsEnumerable().OrderBy(x=> x.Data_Hora);
         }
 
         public Evento Buscar(int id )

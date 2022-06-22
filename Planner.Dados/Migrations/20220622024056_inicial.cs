@@ -1,12 +1,11 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace Planner.Dados.Migrations
 {
-    public partial class inserindoDriverPostgres : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,14 +13,14 @@ namespace Planner.Dados.Migrations
                 name: "Materia",
                 columns: table => new
                 {
-                    Id_Materia = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Id_Usuario = table.Column<int>(type: "integer", nullable: true),
-                    Titulo = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    Email = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
-                    Professor = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
-                    Data_Inicio = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    Data_Fim = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
+                    Id_Materia = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id_Usuario = table.Column<int>(type: "int", nullable: true),
+                    Titulo = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Professor = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Data_Inicio = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Data_Fim = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -32,11 +31,11 @@ namespace Planner.Dados.Migrations
                 name: "Usuario",
                 columns: table => new
                 {
-                    Id_Usuario = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Nome = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    Email = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    Senha = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false)
+                    Id_Usuario = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Senha = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,13 +46,13 @@ namespace Planner.Dados.Migrations
                 name: "Aula",
                 columns: table => new
                 {
-                    Id_Aula = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Id_Materia = table.Column<int>(type: "integer", nullable: false),
-                    Titulo = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    Data_Hora = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    Link = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    MateriaId_Materia = table.Column<int>(type: "integer", nullable: true)
+                    Id_Aula = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id_Materia = table.Column<int>(type: "int", nullable: false),
+                    Titulo = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Data_Hora = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Link = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    MateriaId_Materia = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -69,11 +68,11 @@ namespace Planner.Dados.Migrations
                 name: "Evento",
                 columns: table => new
                 {
-                    Id_Evento = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Titulo = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    Data_Hora = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    UsuarioId = table.Column<int>(type: "integer", nullable: true)
+                    Id_Evento = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Titulo = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Data_Hora = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UsuarioId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -89,12 +88,12 @@ namespace Planner.Dados.Migrations
                 name: "Anotacao",
                 columns: table => new
                 {
-                    Id_Anotacao = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AulaId = table.Column<int>(type: "integer", nullable: false),
-                    Titulo = table.Column<string>(type: "text", nullable: false),
-                    Campo_Texto = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
-                    Link = table.Column<string>(type: "text", nullable: true)
+                    Id_Anotacao = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AulaId = table.Column<int>(type: "int", nullable: false),
+                    Titulo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Campo_Texto = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Link = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -111,13 +110,13 @@ namespace Planner.Dados.Migrations
                 name: "Avaliacao",
                 columns: table => new
                 {
-                    Id_Avaliacao = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    MateriaId = table.Column<int>(type: "integer", nullable: false),
-                    Titulo = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    Nota = table.Column<double>(type: "double precision", nullable: true),
-                    Data_Hora = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    EventoId = table.Column<int>(type: "integer", nullable: false)
+                    Id_Avaliacao = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MateriaId = table.Column<int>(type: "int", nullable: false),
+                    Titulo = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Nota = table.Column<double>(type: "float", nullable: true),
+                    Data_Hora = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EventoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
