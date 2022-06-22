@@ -5,17 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Deseja remover?</h3>
+<h3>Deseja mesmo remover?</h3>
 <div>
-    <h4>AnotacaoViewModel</h4>
+    
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id_Anotacao)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id_Anotacao)
-        </dd>
+        
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Id_Aula)
         </dt>
@@ -44,6 +39,6 @@
     
     <form asp-action="Remover">
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Index">Voltar</a>
     </form>
 </div>
