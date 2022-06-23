@@ -2,6 +2,7 @@
 using Planner.Dados.Repositorios;
 using Planner.Entidades;
 using Planner.Web.Models;
+using System.Collections.Generic;
 
 namespace Planner.Web.Controllers
 {
@@ -9,9 +10,12 @@ namespace Planner.Web.Controllers
     {
         private readonly AvaliacaoRepositorio _repositorio;
 
-        public AvaliacaoController(AvaliacaoRepositorio repositorio)
+        private readonly MateriaRepositorio _repositorioMateria;
+
+        public AvaliacaoController(AvaliacaoRepositorio repositorio, MateriaRepositorio repositorioMateria)
         {
             _repositorio = repositorio;
+            _repositorioMateria = repositorioMateria;
         }
 
         public IActionResult Index()
@@ -54,6 +58,21 @@ namespace Planner.Web.Controllers
 
         public IActionResult Cadastrar()
         {
+            List<MateriaViewModel> lst = new List<MateriaViewModel>();
+           IEnumerable<Materia> materias = _repositorioMateria.Buscar();
+
+            foreach (Materia materia in materias)
+            {
+                MateriaViewModel model = new MateriaViewModel();
+                model.Id_Materia = materia.Id_Materia;
+                model.Titulo = materia.Titulo ;
+                model.Data_Inicio = materia.Data_Inicio;
+                model.Data_Fim = materia.Data_Fim ;
+                model.Professor = materia.Professor ;
+                model.Email = materia.Email ;  
+                lst.Add(model);
+            }
+            ViewBag.Materias = lst;
             return View();
         }
         [HttpPost]
@@ -64,7 +83,7 @@ namespace Planner.Web.Controllers
             avaliacao.Data_Hora = aulaViewModel.Data_Hora;
             avaliacao.Id_Avaliacao = aulaViewModel.Id_Avaliacao;
             avaliacao.Nota = aulaViewModel.Nota;
-            avaliacao.Titulo = aulaViewModel.Titulo.ToString();
+            avaliacao.MateriaId = aulaViewModel.Id_Materia;
 
             var id = _repositorio.Adicionar(avaliacao);
 

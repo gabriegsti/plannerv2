@@ -18,6 +18,15 @@ namespace Planner.Dados.Repositorios
 
         public int Adicionar(Avaliacao avaliacao)
         {
+            var materia = _contexto.Materia.FirstOrDefault(materia => materia.Id_Materia == avaliacao.MateriaId);
+
+            Evento evento = new Evento(avaliacao.Titulo, avaliacao.Data_Hora, materia.Id_Usuario);
+
+            _contexto.Evento.Add(evento);
+            _contexto.SaveChanges();
+
+            avaliacao.EventoId = evento.Id_Evento;
+            avaliacao.MateriaId = 1;
             _contexto.Add(avaliacao);
             return _contexto.SaveChanges();
         }

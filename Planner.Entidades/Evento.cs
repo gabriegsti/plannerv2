@@ -20,7 +20,7 @@ namespace Planner.Entidades
         {
 
         }
-        public Evento(string titulo, DateTime? data_hora, int id_usuario)
+        public Evento(string titulo, DateTime? data_hora, int? id_usuario)
         {
             Titulo = titulo;
             Data_Hora = data_hora;

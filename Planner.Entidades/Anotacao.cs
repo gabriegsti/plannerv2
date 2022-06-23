@@ -6,7 +6,7 @@ namespace Planner.Entidades
     {
         [Key]
         public int Id_Anotacao { get; set; }
-        public int AulaId { get; set; }
+        public int? AulaId { get; set; }
         public virtual Aula Aula { get; set; }
         public string Titulo { get; set; }
         [MaxLength(500)]

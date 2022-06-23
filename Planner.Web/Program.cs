@@ -7,18 +7,15 @@ using System.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<Contexto>(options =>
-    options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<Contexto>(options
+                =>
+{
+options.UseNpgsql(connectionString);
 
-//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-//builder.Services.AddDbContext<Contexto>(options
-//                =>
-//{
-//    options.UseNpgsql(connectionString);
-
-//});
-//AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+});
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
