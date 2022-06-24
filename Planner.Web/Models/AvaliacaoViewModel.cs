@@ -28,6 +28,8 @@ namespace Planner.Web.Models
         public DateTime? Data_Hora { get; set; }
 
         public int Id_Evento { get; set; }
+
+        [Display(Name = "Matéria")]
         public string materia { get; set; }
     }
 }

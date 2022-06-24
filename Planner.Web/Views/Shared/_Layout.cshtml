@@ -113,7 +113,7 @@
 
 <nav class="navbar navbar-light bg-light shadow">
     
-    <div class="container-fluid justify-content-end" >
+    <div class="container-fluid">
         
             <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >
             <span class="navbar-toggler-icon"></span>
@@ -136,20 +136,20 @@
       <span class="fs-4">Student Planner</span>
     </a>
     
-    <div class="modal-body" >
-        <div class="d-grid gap-2 col-12 mx-auto" style="width: 200px;">
+    <div class="modal-body">
+        <div class="d-grid gap-2 col-12 mx-auto" style="width: 200px;" >
             <a asp-controller="Evento" asp-action="Consulta"  role="button" class="btn btn-primary btn-lg btn-block">
-            <svg class="bi me-2" width="16" height="16" ><use xlink:href="#table"></use></svg>
+            <svg class="bi me-2" width="16" height="16" ><use xlink:href="#grid"></use></svg>
 	            Eventos
             </a>            
                        
             <a asp-controller="Materia" asp-action="Index" class="btn btn-primary btn-lg btn-block" role="button">
-            <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#Book"></use></svg>
 	            Matérias
             </a>
             
             <a asp-controller="Aula" asp-action="Index"  class="btn btn-primary btn-lg btn-block" role="button" >
-            <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#Book"></use></svg>
 	           Aulas
             </a>
             <a asp-controller="Anotacao" asp-action="Index" class="btn btn-primary btn-lg btn-block" type="button">
@@ -157,11 +157,11 @@
 	            Anotações
             </a>
             <a asp-controller="Avaliacao" asp-action="Index" class="btn btn-primary btn-lg btn-block" type="button">
-            <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#Book"></use></svg>
                 Avaliações
             </a>
             <a asp-controller="Avaliacao" asp-action="Nota" class="btn btn-primary btn-lg btn-block" type="button">
-            <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#Book"></use></svg>
                 Notas
             </a><br/><br/><br/>
         </div> 
