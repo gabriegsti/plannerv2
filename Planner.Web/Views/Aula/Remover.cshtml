@@ -10,6 +10,7 @@
 <div>
     
     <hr />
+    <form asp-action="Remover">
     <dl class="row">
         
         <dt class = "col-sm-2">
@@ -32,8 +33,7 @@
         </dd>
     </dl>
     
-    <form asp-action="Remover">
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+         @Html.ActionLink("Remover", "RemoverPorId", new { id = Model.Id_Aula } , new {@class= "btn btn-danger"})|
         <a asp-action="Index">Voltar</a>
     </form>
 </div>
