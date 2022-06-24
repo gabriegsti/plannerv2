@@ -46,10 +46,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nota)
-                @Html.DisplayFor(modelItem => item.Nota)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Editar", new { id = item.Id_Avaliacao }, new {@class= "btn btn-primary"} ) 
+             @Html.ActionLink("Editar", "Editar", new { id = item.Id_Avaliacao }, new {@class= "btn btn-primary"} ) 
              @Html.ActionLink("Remover", "Remover", new { id = item.Id_Avaliacao } , new {@class= "btn btn-danger"})
                 
             </td>
