@@ -60,7 +60,7 @@ namespace Planner.Web.Controllers
         public IActionResult Cadastrar()
         {
             List<MateriaViewModel> lst = new List<MateriaViewModel>();
-           IEnumerable<Materia> materias = _repositorioMateria.Buscar();
+            IEnumerable<Materia> materias = _repositorioMateria.Buscar();
 
             foreach (Materia materia in materias)
             {

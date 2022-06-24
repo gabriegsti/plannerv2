@@ -33,7 +33,7 @@ namespace Planner.Dados.Repositorios
             return _contexto.Aula.AsEnumerable();
         }
 
-        public Aula Buscar(int id )
+        public Aula Buscar(int? id )
         {
             return _contexto.Aula.FirstOrDefault(x => x.Id_Aula == id);
         }

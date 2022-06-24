@@ -1,33 +1,31 @@
 ﻿@model Planner.Web.Models.AnotacaoViewModel
 
 @{
-    ViewData["Title"] = "Cadastrar";
+    ViewData["Title"] = "Editar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Cadastro de Anotações</h1>
+<h1>Editar</h1>
 
+<h4>AnotacaoViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Cadastrar">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>          
-              <div class="form-group">
-                <label asp-for="Id_Aula" class="control-label"></label>
-                <br/>
-               <select asp-for="Id_Aula" class="form-control">
-                    @foreach (var item in ViewBag.Aulas) 
-                    {
-                       <option value="@item.Id_Aula">@item.Titulo - @item.Data_Hora</option>
-                    }
-                </select>
-            </div> 
+        <form asp-action="EditarPorId">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="Id_Anotacao" class="form-control" type="hidden"/>
+            <input asp-for="Id_Aula" class="form-control" type="hidden"/>
+
+            <div class="form-group">
+                <label asp-for="AulaTitulo" class="control-label"></label>
+                <input asp-for="AulaTitulo" class="form-control" disabled/>
+                <span asp-validation-for="AulaTitulo" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Titulo" class="control-label"></label>
                 <input asp-for="Titulo" class="form-control" />
                 <span asp-validation-for="Titulo" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="Campo_Texto" class="control-label"></label>
                 <textarea maxlength="500" asp-for="Campo_Texto" class="form-control">
@@ -40,15 +38,17 @@
                 <input asp-for="Link" class="form-control" />
                 <span asp-validation-for="Link" class="text-danger"></span>
             </div>
+            </br>
             <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-primary">Voltar</a>
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

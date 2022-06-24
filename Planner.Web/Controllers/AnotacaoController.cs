@@ -8,10 +8,12 @@ namespace Planner.Web.Controllers
     public class AnotacaoController : Controller
     {
         private readonly AnotacaoRepositorio _repositorio;
+        private readonly AulaRepositorio RepositorioAula;
 
-        public AnotacaoController(AnotacaoRepositorio repositorio)
+        public AnotacaoController(AnotacaoRepositorio repositorio, AulaRepositorio aulaRepositorio)
         {
             _repositorio = repositorio;
+            RepositorioAula = aulaRepositorio;
         }
 
         public IActionResult Index()
@@ -35,6 +37,18 @@ namespace Planner.Web.Controllers
 
         public IActionResult Cadastrar()
         {
+            List<AulaViewModel> lst = new List<AulaViewModel>();
+            IEnumerable<Aula> aulas = RepositorioAula.Buscar();
+
+            foreach (Aula aula in aulas)
+            {
+                AulaViewModel model = new AulaViewModel();
+                model.Id_Materia = aula.Id_Materia;
+                model.Titulo = aula.Titulo;
+                model.Data_Hora = aula.Data_Hora;
+                lst.Add(model);
+            }
+            ViewBag.Aulas = lst;
             return View();
         }
         [HttpPost]
@@ -59,10 +73,10 @@ namespace Planner.Web.Controllers
 
             AnotacaoViewModel model = new AnotacaoViewModel();
             model.Id_Anotacao = anotacao.Id_Anotacao;
+            model.Id_Aula = anotacao.AulaId;
             model.Titulo = anotacao.Titulo;
             model.Campo_Texto = anotacao.Campo_Texto;
             model.Link = anotacao.Link;
-            model.Titulo = anotacao.Titulo.ToString();
 
             return View(model);
         }
@@ -70,6 +84,39 @@ namespace Planner.Web.Controllers
         public IActionResult RemoverPorId(int id)
         {
             _repositorio.Excluir(id);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Editar(int id)
+        {
+            var anotacao = _repositorio.Buscar(id);
+            var aula = RepositorioAula.Buscar(anotacao.AulaId);
+            
+            AnotacaoViewModel model = new AnotacaoViewModel();
+            model.Id_Anotacao = anotacao.Id_Anotacao; 
+            model.Id_Aula = anotacao.AulaId;
+            model.Titulo = anotacao.Titulo;
+            model.Campo_Texto = anotacao.Campo_Texto;
+            model.Link = anotacao.Link;
+           
+            if(aula != null)
+            model.AulaTitulo = aula.Titulo;
+
+            return View(model);
+        }
+
+        public IActionResult EditarPorId(AnotacaoViewModel anotacaoViewModel)
+        {
+           
+            Anotacao model = new Anotacao();
+            model.Id_Anotacao = anotacaoViewModel.Id_Anotacao;
+            model.AulaId = anotacaoViewModel.Id_Aula;
+            model.Titulo = anotacaoViewModel.Titulo;
+            model.Campo_Texto = anotacaoViewModel.Campo_Texto;
+            model.Link = anotacaoViewModel.Link;
+
+            _repositorio.Atualizar(model);
+
             return RedirectToAction("Index");
         }
     }
