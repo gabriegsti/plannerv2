@@ -38,25 +38,7 @@ namespace Planner.Web.Controllers
             return View(lst);
         }
 
-        public IActionResult Nota()
-        {
-            List<AvaliacaoViewModel> lst = new List<AvaliacaoViewModel>();
-            var avaliacoes = _repositorio.Buscar();
-
-            foreach (var avaliacao in avaliacoes)
-            {
-                AvaliacaoViewModel model = new AvaliacaoViewModel();
-                model.Id_Avaliacao = avaliacao.Id_Avaliacao;
-                model.Titulo = avaliacao.Titulo;
-                model.Data_Hora = avaliacao.Data_Hora;
-                model.Nota = avaliacao.Nota;
-                model.Titulo = avaliacao.Titulo.ToString();
-                lst.Add(model);
-            }
-
-            return View(lst);
-        }
-
+        
         public IActionResult Cadastrar()
         {
             List<MateriaViewModel> lst = new List<MateriaViewModel>();
