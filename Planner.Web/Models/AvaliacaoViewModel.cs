@@ -1,4 +1,7 @@
 ﻿
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Planner.Dados.Repositorios;
+using Planner.Entidades;
 using Planner.Interfaces;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -6,11 +9,12 @@ using System.ComponentModel.DataAnnotations;
 namespace Planner.Web.Models
 {
     public class AvaliacaoViewModel : IAgendavelViewModel
-    {
+    {    
+
         [Key]
         [Display(Name = "Cod.")]
         public int Id_Avaliacao { get; set; }
-        
+        [Display(Name = "Matéria")]
         public int Id_Materia { get; set; }
 
         [Display(Name = "Avaliação")]
@@ -24,5 +28,6 @@ namespace Planner.Web.Models
         public DateTime? Data_Hora { get; set; }
 
         public int Id_Evento { get; set; }
+        public string materia { get; set; }
     }
 }

@@ -29,7 +29,6 @@ namespace Planner.Web.Controllers
                 model.Data_Inicio = materia.Data_Inicio;
                 model.Data_Fim = materia.Data_Fim;
                 lst.Add(model);
-
             }
             return View(lst);
         }

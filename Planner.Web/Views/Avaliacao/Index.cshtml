@@ -36,8 +36,6 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            
-            
             <td>
                 @Html.DisplayFor(modelItem => item.Titulo)
             </td>
@@ -49,8 +47,7 @@
             </td>
             <td>
              @Html.ActionLink("Editar", "Editar", new { id = item.Id_Avaliacao }, new {@class= "btn btn-primary"} ) 
-             @Html.ActionLink("Remover", "Remover", new { id = item.Id_Avaliacao } , new {@class= "btn btn-danger"})
-                
+             @Html.ActionLink("Remover", "Remover", new { id = item.Id_Avaliacao } , new {@class= "btn btn-danger"})               
             </td>
         </tr>
 }

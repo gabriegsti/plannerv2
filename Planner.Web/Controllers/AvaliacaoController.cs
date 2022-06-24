@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Planner.Dados.Repositorios;
 using Planner.Entidades;
 using Planner.Web.Models;
@@ -108,6 +109,36 @@ namespace Planner.Web.Controllers
         public IActionResult RemoverPorId(int id)
         {
             _repositorio.Excluir(id);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Editar(int id)
+        {
+            var avaliacao = _repositorio.Buscar(id);
+            var materia = _repositorioMateria.Buscar(avaliacao.MateriaId);
+            ViewBag.Materias = new SelectList(_repositorioMateria.Buscar(), "Id_Materia", "Titulo");
+            AvaliacaoViewModel model = new AvaliacaoViewModel();
+            model.Id_Avaliacao = avaliacao.Id_Avaliacao;
+            model.Titulo = avaliacao.Titulo;
+            model.Nota = avaliacao.Nota;
+            model.Data_Hora = avaliacao.Data_Hora;
+            model.materia = materia.Titulo;
+
+            return View(model); 
+        }
+
+        public IActionResult EditarPorId(AvaliacaoViewModel avaliacaoViewModel)
+        {
+            Avaliacao avaliacao = new Avaliacao();
+            avaliacao.Id_Avaliacao = avaliacaoViewModel.Id_Avaliacao;
+            avaliacao.Titulo = avaliacaoViewModel.Titulo;
+            avaliacao.Nota = avaliacaoViewModel.Nota;
+            avaliacao.Data_Hora = avaliacaoViewModel.Data_Hora;
+            avaliacao.MateriaId = avaliacaoViewModel.Id_Materia;
+            avaliacao.EventoId = avaliacaoViewModel.Id_Evento;
+            _repositorio.Atualizar(avaliacao);
+
+
             return RedirectToAction("Index");
         }
     }

@@ -112,7 +112,6 @@ namespace Planner.Web.Controllers
             evento.Data_Hora = eventoViewModel.Data_Hora;
             evento.Id_Evento = eventoViewModel.Id_Evento;
             evento.UsuarioId = eventoViewModel.Id_Usuario;
-            evento.Titulo = eventoViewModel.Titulo.ToString();
 
            _repositorio.Atualizar(evento);
 
