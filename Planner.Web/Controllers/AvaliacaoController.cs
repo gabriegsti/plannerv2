@@ -116,12 +116,14 @@ namespace Planner.Web.Controllers
         {
             var avaliacao = _repositorio.Buscar(id);
             var materia = _repositorioMateria.Buscar(avaliacao.MateriaId);
-            ViewBag.Materias = new SelectList(_repositorioMateria.Buscar(), "Id_Materia", "Titulo");
+           
             AvaliacaoViewModel model = new AvaliacaoViewModel();
             model.Id_Avaliacao = avaliacao.Id_Avaliacao;
             model.Titulo = avaliacao.Titulo;
             model.Nota = avaliacao.Nota;
             model.Data_Hora = avaliacao.Data_Hora;
+            model.Id_Materia = avaliacao.MateriaId;
+            model.Id_Evento = avaliacao.EventoId;
             model.materia = materia.Titulo;
 
             return View(model); 
@@ -135,9 +137,8 @@ namespace Planner.Web.Controllers
             avaliacao.Nota = avaliacaoViewModel.Nota;
             avaliacao.Data_Hora = avaliacaoViewModel.Data_Hora;
             avaliacao.MateriaId = avaliacaoViewModel.Id_Materia;
-            avaliacao.EventoId = avaliacaoViewModel.Id_Evento;
+            avaliacao.EventoId = avaliacaoViewModel.Id_Materia;
             _repositorio.Atualizar(avaliacao);
-
 
             return RedirectToAction("Index");
         }

@@ -26,7 +26,6 @@ namespace Planner.Dados.Repositorios
             _contexto.SaveChanges();
 
             avaliacao.EventoId = evento.Id_Evento;
-            avaliacao.MateriaId = 1;
             _contexto.Add(avaliacao);
             return _contexto.SaveChanges();
         }
