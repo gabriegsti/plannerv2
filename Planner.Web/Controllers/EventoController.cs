@@ -11,8 +11,18 @@ namespace Planner.Web.Controllers
 
         public EventoController(EventoRepositorio repositorio)
         {
+
             _repositorio = repositorio;
         }
+
+        [HttpGet]
+        [Route("indexEvento")]
+        public IActionResult RecuperaEvento()
+        {
+            var eventos = _repositorio.Buscar();
+            return Ok(eventos);
+        }
+
 
         public IActionResult Consulta()
         {
