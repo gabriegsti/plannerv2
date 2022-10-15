@@ -56,5 +56,11 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Evento}/{action=Consulta}/{id?}");
 app.MapRazorPages();
+app.UseCors(c =>
+{
+    c.AllowAnyHeader();
+    c.AllowAnyMethod();
+    c.AllowAnyOrigin();
+});
 
 app.Run();
