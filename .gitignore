@@ -453,3 +453,17 @@ $RECYCLE.BIN/
 !.vscode/launch.json
 !.vscode/extensions.json
 Planner.Web/appsettings.json
+plannermobile/plannermobile/node_modules/
+plannermobile/plannermobile/.expo/
+plannermobile/plannermobile/dist/
+plannermobile/plannermobile/npm-debug.*
+plannermobile/plannermobile/*.jks
+plannermobile/plannermobile/*.p8
+plannermobile/plannermobile/*.p12
+plannermobile/plannermobile/*.key
+plannermobile/plannermobile/*.mobileprovision
+plannermobile/plannermobile/*.orig.*
+plannermobile/plannermobile/web-build/
+
+# macOS
+plannermobile/plannermobile/.DS_Store
